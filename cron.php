@@ -17,7 +17,7 @@ include('config.php');
 		$upload_path = "uploads/".$row['unique_id'].".json";
 		//echo "python3 uploadFile.py " . escapeshellarg($api_key) . " " . escapeshellarg($gpt_model_name) . " " . escapeshellarg($upload_path);
 		
-		$output = shell_exec("python3 uploadFile.py " . escapeshellarg($api_key) . " " . escapeshellarg($gpt_model_name) . " " . escapeshellarg($upload_path));
+		$output = shell_exec("python3 ".$absolute_path."uploadFile.py " . escapeshellarg($api_key) . " " . escapeshellarg($gpt_model_name) . " " . escapeshellarg($upload_path));
 		print_r($output);
 		$ot=explode(PHP_EOL,$output);
 		if($ot[0]){
@@ -47,7 +47,7 @@ include('config.php');
 		$api_key = $row['api_key'];
 		$unique_id = $row['unique_id'];
 		$job_id = $row['job_id'];
-		$output = shell_exec("python3 updateStatus.py " . escapeshellarg($api_key) . " " . escapeshellarg($job_id));
+		$output = shell_exec("python3 ".$absolute_path."updateStatus.py " . escapeshellarg($api_key) . " " . escapeshellarg($job_id));
 		$ot=json_decode(trim($output),true);
 		// echo "<pre>"; print_r($ot);
 		if($ot['status'] == "failed"){
