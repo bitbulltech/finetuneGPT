@@ -13,6 +13,8 @@ Installation
 1) Setup mysql database 
 2) Import database.sql 
 3) Edit config file for base url, database credentials, absolute server path
-
+4) Create cronjob for every minute to execute cron.php file
+example: 
+*/1 * * * * php /var/www/html/finetuneGPT/cron.php 
 
 
